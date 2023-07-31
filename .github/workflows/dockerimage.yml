@@ -13,7 +13,7 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker build -t solaa/autocoder .
+          docker build -t solaaa/autocoder .
           docker images
-          docker tag solaa/autocoder solaa/autocoder:${{ github.sha }}
-          docker push solaa/autocoder:${{ github.sha }}
+          docker tag solaaa/autocoder solaa/autocoder:${{ github.sha }}
+          docker push solaaa/autocoder:${{ github.sha }}
