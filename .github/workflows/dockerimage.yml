@@ -15,5 +15,5 @@ jobs:
         run: |
           docker build -t solaaa/autocoder .
           docker images
-          docker tag solaaa/autocoder solaa/autocoder:${{ github.sha }}
+          docker tag solaaa/autocoder solaaa/autocoder:${{ github.sha }}
           docker push solaaa/autocoder:${{ github.sha }}
