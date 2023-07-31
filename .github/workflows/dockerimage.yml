@@ -17,3 +17,5 @@ jobs:
           docker images
           docker tag solaaa/autocoder solaaa/autocoder:${{ github.sha }}
           docker push solaaa/autocoder:${{ github.sha }}
+          docker tag solaaa/autocoder solaaa/autocoder:latest
+          docker push solaaa/autocoder:latest
