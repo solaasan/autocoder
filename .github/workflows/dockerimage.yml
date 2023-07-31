@@ -1,0 +1,23 @@
+    name: Publish Docker image
+    on:
+     push:
+       branches: [ master ]
+
+  jobs:
+    push_to_registry:
+      name: Push Docker image to Docker Hub
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out the repo
+          uses: actions/checkout@v2
+
+        - name: Log in to Docker Hub
+          run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+        - name: Build and push Docker images
+          run: |
+            docker build -t solaa/autocoder .
+            docker images
+            docker tag solaa/autocoder solaa/autocoder:${{ github.sha }}
+            docker push solaa/autocoder:${{ github.sha }}
+
