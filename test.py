@@ -1,1 +1,0 @@
-from autocoder.tests import *

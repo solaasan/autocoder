@@ -77,6 +77,7 @@ context = {
         validation_error,
         test_success,
         test_error,
+        test_output,
     }],
     project_code_formatted
 }
@@ -107,6 +108,7 @@ context = {
         validation_error,
         test_success,
         test_error,
+        test_output,
     }]
 }
 ```
