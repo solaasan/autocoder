@@ -13,20 +13,15 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Clone the git repository
-RUN git clone https://github.com/AutonomousResearchGroup/autocoder.git .
-
-# Delete the .git folder
-RUN rm -rf .git
+RUN git clone https://github.com/AutonomousResearchGroup/autocoder.git . && \
+    rm -rf .git && \
+    curl https://api.github.com/repos/AutonomousResearchGroup/autocoder/commits > commits.json
 
 # Create .preferences file as blank json if it does not exist
 RUN if [ ! -f .preferences ]; then echo "{}" > .preferences; fi
 
-# Get the latest commit information and save it
-RUN curl https://api.github.com/repos/AutonomousResearchGroup/autocoder/commits > commits.json
-
 # Install python dependencies
 RUN pip install --no-cache-dir .
-
 
 # Create start.sh file.
 RUN printf '#!/bin/bash\n\
